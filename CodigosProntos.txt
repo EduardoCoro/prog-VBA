@@ -1,0 +1,371 @@
+---------------------------------------------------------------------------------------------------
+IF comum
+
+Sub Adição()
+   Dim num1 As Integer, num2 As Integer
+   Dim soma As Integer
+   num1 = InputBox("Informe o 1o. valor")
+   num2 = InputBox("Informe o 2o. valor")
+   soma = num1 + num2
+   If (soma > 10) Then
+      MsgBox "Soma maior que dez"
+   Else
+      MsgBox "Soma menor que dez"
+   End If
+End Sub
+----------------------------------Explicar identação de codigo
+Sub mediaProvas()
+Dim nt1 As Single, nt2 As Single
+Dim nt3 As Single, media As Single
+nt1 = InputBox("Informe a 1a. nota")
+nt2 = InputBox("Informe a 2a. nota")
+nt3 = InputBox("Informe a 3a. nota")
+media = (nt1 + nt2 + nt3) / 3
+If (media >= 6#) Then
+MsgBox "Aprovado"
+Else
+MsgBox "Reprovado"
+End If
+End Sub
+
+
+-------------------------------if Encadeado
+
+Sub mediaProvas()
+Dim nt1 As Single, nt2 As Single
+Dim nt3 As Single, media As Single
+nt1 = InputBox("Informe a 1a. nota")
+nt2 = InputBox("Informe a 2a. nota")
+nt3 = InputBox("Informe a 3a. nota")
+media = (nt1 + nt2 + nt3) / 3
+If (media >= 0) And (media < 5) Then
+   MsgBox "Reprovado"
+ElseIf (media >= 5) And (media < 6) Then
+   MsgBox "Exame"
+ElseIf (media >= 5) And (media < 6) Then
+   MsgBox "Aprovado"
+Else
+   MsgBox "As Notas digitados são invalidas!"
+End If
+End Sub
+----------
+Sub BonusSalario()
+    Dim cargo As Integer
+    Dim salario As Currency, bonus As Currency
+    salario = InputBox("Informe o salario: ")
+    cargo = InputBox("Informe o cargo: ")
+    If cargo = 1 Then
+       bonus = (salario * 15) / 100
+    ElseIf cargo = 2 Then
+       bonus = (salario * 10) / 100
+    ElseIf cargo = 3 Then
+       bonus = (salario * 8) / 100
+    Else
+       bonus = 0
+    End If
+    MsgBox "Salario: " & salario & Chr(13) & _
+    "Cargo: " & cargo & " Bonus: " & bonus & Chr(13) & _
+    "Salario Atualizado: " & (salario + bonus)
+    
+End Sub
+
+   
+-----------------------------CASE
+Sub bonuscase()
+    Dim cargo As Integer
+    Dim salario As Currency, bonus As Currency
+    salario = InputBox("Informe o salario: ")
+    cargo = InputBox("Informe o cargo: ")
+    Select Case cargo
+        Case 1: bonus = salario * 0.15
+        Case 2:
+                bonus = salario * 0.1
+        Case 3:
+                bonus = salario * 0.08
+        Case 4, 5:
+                bonus = salario * 0.05
+        Case 6 To 8:
+                bonus = salario * 0.01
+        Case Is < 12:
+                bonus = salario * 0.005
+        Case Else:
+                bonus = 0
+    End Select
+
+    MsgBox "Salario: " & salario & Chr(13) & _
+    "Cargo: " & cargo & " Bonus: " & bonus & Chr(13) & _
+    "Salario Atualizado: " & (salario + bonus)
+    
+End Sub
+
+---------------------------------------- Estruturas de Repetição
+------Com Teste no final-------
+Sub multiplicaWhileFinal()
+    Dim valor1, valor2, resultado As Integer
+    Dim resp As VbMsgBoxResult
+        
+    Do
+        valor1 = InputBox("1o. número")
+        valor2 = InputBox("2o. número")
+        resultado = valor1 * valor2
+        MsgBox "Resultado: " & resultado
+        resp = MsgBox("Deseja continuar?", vbYesNo)
+    Loop While (resp = vbYes)
+    
+End Sub
+--------
+Sub multiplicadountilfinal()
+    Dim valor1, valor2, resultado As Integer
+    Dim resp As VbMsgBoxResult
+       
+    Do
+        valor1 = InputBox("1o. número")
+        valor2 = InputBox("2o. número")
+        resultado = valor1 * valor2
+        MsgBox "Resultado: " & resultado
+        resp = MsgBox("Deseja continuar?", vbYesNo)
+    Loop Until resp = vbNo
+    
+End Sub
+
+------Com Teste no Inicio-------
+Sub multiplicaWhile()
+    Dim valor1, valor2, resultado As Integer
+    Dim resp As VbMsgBoxResult
+    
+    resp = vbYes
+    Do While (resp = vbYes)
+        valor1 = InputBox("1o. número")
+        valor2 = InputBox("2o. número")
+        resultado = valor1 * valor2
+        MsgBox "Resultado: " & resultado
+        resp = MsgBox("Deseja continuar?", vbYesNo)
+    Loop
+    
+End Sub
+
+-------
+Sub multiplicadountil()
+    Dim valor1, valor2, resultado As Integer
+    Dim resp As VbMsgBoxResult
+    
+    resp = vbYes
+    Do Until resp = vbNo
+        valor1 = InputBox("1o. número")
+        valor2 = InputBox("2o. número")
+        resultado = valor1 * valor2
+        MsgBox "Resultado: " & resultado
+        resp = MsgBox("Deseja continuar?", vbYesNo)
+    Loop
+    
+End Sub
+----Converte Binario
+Sub converteboinario()
+    Dim dec As Integer, bin As String
+    Dim resto As Integer, sResto As String
+    Dim resp As VbMsgBoxResult
+    
+    Do
+        dec = InputBox("Informe um num.", , 19)
+        
+        resto = dec Mod 2       ' retorna o resto da divisão
+        sResto = CStr(resto)   ' converte o resto para o tipo string
+        bin = sResto + bin       ' concatena o resto com o conteúdo de bin
+        dec = dec \ 2               ' retorna o quociente inteiro da divisão
+        
+        MsgBox "Valor em binário: " & bin
+        
+        resp = MsgBox("Deseja continuar?", vbYesNo)
+    Loop While (resp = vbYes)
+    
+  End Sub
+
+-----O procedimento abaixo calcula e mostra o fatorial de um número fornecido pelo usuário.
+Sub fatorial()
+	Dim num As Integer, fat As Integer, i As Integer
+	num = InputBox("Informe um num.", , 5)
+	
+	fat = 1: i = 1
+	Do
+		fat = fat * i
+		i = i + 1
+	Loop Until i > num
+	MsgBox "Fatorial de " & num & ": " & fat
+End Sub
+
+-------------------------Para Explicar o For------------------
+----------Saber se o numero é par ou não ---- Desafiar eles a fazerm esse programinha!!!!
+Sub ParImpar()
+   Dim Resto As Double
+   Dim num As Integer
+   
+   num = InputBox("Informe um num.", , 5)
+   Resto = num Mod 2
+   
+   If Resto = 0 Then
+     MsgBox "Numero Par!!!"
+     
+   Else
+     MsgBox "Numero Impar!!!"
+     
+   End If
+    
+End Sub
+
+------------------------------------------------Utilizando o FOR -------------------------------------------
+----- Fazer programa que soma a quantidade e a soma de numeros pares até 10 utilizando While e if!
+
+Sub exercicio1()
+    
+    Dim vNum As Integer
+    Dim vSoma As Integer
+    Dim vCont As Integer
+    
+    vNum = 0
+    
+    Do
+        If (vNum Mod 2 = 0) Then
+            vSoma = vSoma + vNum
+            vCont = vCont + 1
+        End If
+        vNum = vNum + 1
+    Loop While (vNum < 11)
+    
+    MsgBox "Foram Somados " & vCont & " numeros e a soma deu: " & vSoma
+    
+        
+        
+End Sub
+
+
+-----Agora mostrar com o For!
+Sub SomaPares()
+    Dim total, qtdpares As Integer, j As Integer
+
+    ' explicar necessidade da inicialização de variaveis
+    qtdpares = 0
+    total = 0
+        
+    For j = 2 To 10 Step 2
+        qtdpares = qtdpares + 1
+        total = total + j
+    Next j
+    
+    MsgBox "A quantidade de numeros pares é: " & qtdpares & Chr(13) & _
+           "A soma de numeros pares é: " & total
+    
+End Sub
+
+
+
+-------------Mostrar Programas maior/menor com if / melhorado
+
+---Simples com IF
+Sub Li1Ex10()
+
+Dim vNum1, vNum2, vNum3 As Double
+
+vNum1 = InputBox("Digite um numero:")
+vNum2 = InputBox("Digite outro numero:")
+vNum3 = InputBox("Digite um terceiro numero:")
+
+If (vNum1 > vNum2 And vNum1 > vNum3) Then
+    
+    MsgBox ("Maior numero: " & Chr(13) & vNum1)
+        
+ElseIf (vNum2 > vNum1 And vNum2 > vNum3) Then
+                
+    MsgBox ("Maior numero: " & Chr(13) & vNum2)
+                    
+ElseIf (vNum3 > vNum2 And vNum3 > vNum1) Then
+                            
+    MsgBox ("Maior numero: " & Chr(13) & vNum3)
+                                
+ElseIf (vNum1 = vNum2 And vNum1 > vNum3) Then
+          
+    MsgBox ("Maior numero: " & vNum1)
+                                           
+ElseIf (vNum1 > vNum2 And vNum1 = vNum3) Then
+                                                    
+    MsgBox ("Maior numero: " & vNum1)
+                                                       
+ElseIf (vNum2 > vNum1 And vNum2 = vNum3) Then
+                                                    
+    MsgBox ("Maior numero: " & vNum2)
+Else
+                           
+    MsgBox ("Os numeros digitados  sao iguais")
+End If
+
+End Sub
+
+
+---Melhorado não esquecer de falar da converção de tipos... vNum = int(InputBox("Digite o " & i & "numero"))
+
+Sub maiormenormelhorado()
+Dim vNum, vMaior, vMenor, i As Integer
+
+
+For i = 1 To 10
+   vNum = InputBox("Digite o " & i & "numero")
+   If i = 1 Then
+      vMaior = vNum
+      vMenor = vNum
+   End If
+   If vNum < vMenor Then
+      vMenor = vNum
+   End If
+   If vNum > vMaior Then
+      vMaior = vNum
+   End If
+   
+Next
+
+MsgBox "O MAIOR número é: " & vMaior & Chr(13) & _
+       "O menor número é: " & vMenor
+
+
+End Sub
+------------------------------------------------------------------
+   
+Sub maiormenorMatriz()
+Dim vMaior, vMenor, vSoma, vMedia, i As Integer
+Dim vNum(10) As Integer
+Dim vExtenso As String
+
+' Receber os numeros
+For i = 1 To 10
+   vNum(i) = Int(InputBox("Digite o " & i & "numero"))
+Next
+
+' Calcular
+For i = 1 To 10
+   'Calcular Maior/Menor
+   If i = 1 Then
+      vMaior = vNum(i)
+      vMenor = vNum(i)
+   End If
+   If vNum(i) < vMenor Then
+      vMenor = vNum
+   End If
+   If vNum(i) > vMaior Then
+      vMaior = vNum(i)
+   End If
+   'Calcular a Soma
+   vSoma = vSoma + vNum(i)
+   'Montar numeros por Extenso pra mostrar
+   vExtenso = vExtenso & " " & Str(vNum(i))
+Next
+'Calcular a Média
+vMedia = vSoma / 10
+
+'Mostrar Resultados
+MsgBox "Os Numeros digitados foram: " & vExtenso & Chr(13) & _
+       "A Soma dos numeros é: " & vSoma & Chr(13) & _
+       "A Média dos numeros é: " & vMedia & Chr(13) & _
+       "O MAIOR número é: " & vMaior & Chr(13) & _
+       "O menor número é: " & vMenor
+       
+End Sub
+
+-------------------------------------------------------------------

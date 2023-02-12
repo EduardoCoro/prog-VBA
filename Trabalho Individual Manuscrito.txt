@@ -1,0 +1,57 @@
+
+--------------------Trabalho Individual e Manuscrito--------------------------------
+
+1) Tipos de dados - Declaração e “tipo” de variável
+
+2) Uso de Operadores - Fazendo cálculos e comparações 
+
+3) Funções para conversão de tipos 
+
+4) Funçoes para Calculas Matematicos
+
+5) Funções para tratamento de String
+
+6) Funções para tratamento de Data e Hora
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+------------ Criando Funções Próprias Lembrando programa par e impar
+
+Public Function Verifica(num) As String
+   Dim Resto As Double
+   Resto = num Mod 2
+   If Resto = 0 Then
+     'MsgBox "Numero Par!!!"
+     Verifica = "Numero Par!!!"
+   Else
+     'MsgBox "Numero Impar!!!"
+     Verifica = "Numero Impar!!!"
+   End If
+    
+End Function
+
+
+---------------------------------------------------------------
+
+ Entrar em Formularios e pedir pra fazer os programas
